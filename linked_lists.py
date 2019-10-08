@@ -37,6 +37,7 @@ class LinkedList:
         return None
 
     def find_all(self, val):
+        global found
         found = []
         node = self.head
         while node is not None:

@@ -30,6 +30,7 @@ one_list = LinkedList()
 empty_list = LinkedList()
 many_list = LinkedList()
 sum_list = LinkedList()
+find_test = LinkedList()
 
 one_list.add_in_tail(n1)
 
@@ -45,3 +46,15 @@ test_list(many_list)
 sum_list = sum_link_vals(many_list, many_list)
 print('\n')
 sum_list.print_all_nodes()
+
+for i in range(10):
+    if i % 2 == 0:
+        find_test.add_in_tail(Node(5))
+    else:
+        find_test.add_in_tail(Node(4))
+find_test.add_in_tail(Node(3))
+find_test.add_in_tail(Node(1))
+find_test.insert(find_test.find(4),Node(2))
+find_test.print_all_nodes()
+print('found list:',find_test.find_all(0))
+
