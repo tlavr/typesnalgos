@@ -75,16 +75,16 @@ class LinkedList:
         return ans
 
     def insert(self, afterNode, nNode):
-        node = self.head
         global newNode
         newNode = nNode
-        while node is not None:
-            if self.head == None:
-                if afterNode == None:
-                    newNode.next = None
-                    self.add_in_tail(newNode)
-                    return
-                
+        if self.head is None:
+            if afterNode is None:
+                newNode.next = None
+                self.add_in_tail(newNode)
+                return
+        
+        node = self.head
+        while node is not None:   
             if node == afterNode:
                 if node.next is None:                  
                     self.add_in_tail(newNode)
@@ -108,5 +108,4 @@ def sum_link_vals(a,b):
     else:
         print('Linked lists don\t have the same length!')
     return c
-
 
