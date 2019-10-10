@@ -56,5 +56,5 @@ find_test.add_in_tail(Node(3))
 find_test.add_in_tail(Node(1))
 find_test.insert(find_test.find(4),Node(2))
 find_test.print_all_nodes()
-print('found list:',find_test.find_all(0))
+print('found list:',find_test.find_all(find_test.find(Node(1)).value))
 

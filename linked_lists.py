@@ -1,10 +1,3 @@
-#!/usr/bin/env python
-#-*- coding: utf-8 -*-
-
-#import ctypes
-# N = 5
-# A = (N * ctypes.py_object)()
-
 class Node:
     def __init__(self, v):
         self.value = v
@@ -41,7 +34,7 @@ class LinkedList:
         found = []
         node = self.head
         while node is not None:
-            if node.value == val:
+            if (node.value == val)or(node == val):
                 found.append(node.value)
             node = node.next
         return found
