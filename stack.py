@@ -94,3 +94,36 @@ class Stack:
 class StackFIFO(Stack):
     def push(self, value):
         self.stack.add_in_tail(Node(value)) # для номера 2, где FIFO
+
+def bracketparser(line):
+    stack = Stack()
+    for i in line:
+        if i == ')':
+            if stack.pop() is None:
+                print('Parentheses are not balanced!')
+                return False
+        elif i == '(':
+            stack.push(i)
+    if stack.size() > 0:
+        print('Parentheses are not balanced!')
+        return False
+    print('Parentheses are balanced!')
+    return True
+
+def postcalc(line):
+    line = ''.join(line.split())
+    stack1 = StackFIFO()
+    stack2 = Stack()
+    for i in line:
+        stack1.push(i)
+    while stack1.size()>0:
+        ch = stack1.pop()
+        print(ch)
+        if ch == '+':
+            stack2.push(stack2.pop()+stack2.pop())
+        elif ch == '*':
+            stack2.push(stack2.pop() * stack2.pop())
+        elif ch == '=':
+            return stack2.peek()
+        else:
+            stack2.push(int(ch))
