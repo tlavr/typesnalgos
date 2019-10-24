@@ -101,19 +101,21 @@ class Queue:
             return ans
         return None # если очередь пустая
 
-    def cycleshift(self,N):
+    def cycleshift(self,N,left=False):
         # N > 0 - вправо
         # N < 0 - влево
+        if N < 0:
+            left = True
+            N = -N
         if self.size() > 0:
             self.queue.tail.next = self.queue.head
             self.queue.head.prev = self.queue.tail
             node = self.queue.head
-            if N>0:
-                for i in range(N):
-                    node = node.prev
-            else:
-                for i in range(-N):
+            for i in range(N):
+                if left:
                     node = node.next
+                else:
+                    node = node.prev
             self.queue.head = node
             self.queue.tail = node.prev
             self.queue.head.prev = None
@@ -139,3 +141,7 @@ class QueueStack:
 
     def size(self):
         return self.enq.size()+self.deq.size()
+
+def cycshift(qu,N):
+    for i in range(N):
+        qu.enqueue(qu.dequeue())
