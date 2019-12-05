@@ -21,12 +21,13 @@ try:
     printset(set)
     set.put('126')
     printset(set)
-    set.put(125)
+    set.put('125')
     printset(set)
+
 except:
     print('Put error!')
 
-#remove tests [125,126]
+#remove tests [125,'125','126']
 print('Remove tests started!')
 print('Set size is: '+str(set.size()))
 try:
@@ -37,7 +38,7 @@ try:
 except:
     print('Remove error!')
 
-#intersection tests [126]
+#intersection tests ['125','126']
 print('Intersection tests started!')
 print('Set size is: '+str(set.size()))
 try:
@@ -52,7 +53,7 @@ try:
 except:
     print('Intersection error!')
 
-#union tests 1:[126] 2:[126,128] 3: [127,129]
+#union tests 1:['125','126'] 2:[126,'128'] 3: [127,129]
 print('Union tests started!')
 print('Set size is: '+str(set.size()))
 try:
@@ -63,7 +64,7 @@ try:
 except:
     print('Union error!')
 
-#difference tests 1:[126] 2:[126,128] 3: [127,129] 4:[]
+#difference tests 1:['125','126'] 2:[126,'128'] 3: [127,129] 4:[]
 print('Difference tests started!')
 print('Set size is: '+str(set.size()))
 try:
@@ -73,14 +74,17 @@ try:
 except:
     print('Difference error!')
 
-#subset tests 1:[126] 2:[126,128] 3: [127,129] 4:[]
+#subset tests 1:['125','126'] 2:[126,'128'] 3: [127,129] 4:[]
 print('Subset tests started!')
 print('Set size is: '+str(set.size()))
 try:
+    set5 = PowerSet()
+    set5.put('125')
     print(set.issubset(set2))
     print(set.issubset(set3))
     print(set.issubset(set4))
     print(set2.issubset(set))
+    print(set.issubset(set5))
 except:
     print('Subset error!')
 

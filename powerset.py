@@ -7,12 +7,18 @@ class HashTable:
         self.slots = [None] * self.size
 
     def hash_fun(self, value):
-        # в качестве value поступают строки!
+        # в качестве value поступают любые типы!
         # всегда возвращает корректный индекс слота
         # всегда возвращает корректный индекс слота
         hash = 0
-        for i in value:
-            hash = (hash*17 + ord(i)) % self.size
+        if type(value) == str:
+            for i in value:
+                hash = (hash*17 + ord(i)) % self.size
+        else:
+            tmp = value
+            while round(tmp / 10) > 0:
+                hash = (hash*17 + round(tmp % 10)) % self.size
+                tmp = round(tmp / 10)
         return hash # hash [0..self.size - 1]
 
     def seek_slot(self, value):
@@ -60,14 +66,14 @@ class PowerSet(HashTable):
 
     def put(self, value):
         # всегда срабатывает
-        isput = self.hash.put(str(value))
+        isput = self.hash.put(value)
         if isput is not None:
             self.len += 1
 
     def get(self, value):
         # возвращает True если value имеется в множестве,
         # иначе False
-        value = str(value)
+        #value = str(value)
         if self.hash.find(value) != None:
             return True
         return False
@@ -75,7 +81,7 @@ class PowerSet(HashTable):
     def remove(self, value):
         # возвращает True если value удалено
         # иначе False
-        value = str(value)
+        #value = str(value)
         idx = self.hash.find(value)
         if idx != None:
             self.hash.slots[idx] = None
