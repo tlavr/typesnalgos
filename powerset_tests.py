@@ -88,3 +88,14 @@ try:
 except:
     print('Subset error!')
 
+"""h_list = []
+col_c = 0
+for i in range(20000):
+    tmp = set.hash.hash_fun(i)
+    if tmp in h_list:
+        print('Collision occured!')
+        col_c += 1
+    else:
+        h_list.append(tmp)
+    print(tmp)
+print('Number of collisison occured: '+str(col_c))"""

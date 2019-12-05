@@ -15,10 +15,8 @@ class HashTable:
             for i in value:
                 hash = (hash*17 + ord(i)) % self.size
         else:
-            tmp = value
-            while round(tmp / 10) > 0:
-                hash = (hash*17 + round(tmp % 10)) % self.size
-                tmp = round(tmp / 10)
+            hash = round(value) % self.size
+
         return hash # hash [0..self.size - 1]
 
     def seek_slot(self, value):
