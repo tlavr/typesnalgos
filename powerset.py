@@ -4,6 +4,7 @@ class HashTable:
     def __init__(self, sz, stp):
         self.size = sz
         self.step = stp
+        self.stepcnt = 0
         self.slots = [None] * self.size
 
     def hash_fun(self, value):
@@ -12,8 +13,12 @@ class HashTable:
         # всегда возвращает корректный индекс слота
         hash = 0
         if type(value) == str:
+            cnt = 0
             for i in value:
                 hash = (hash*17 + ord(i)) % self.size
+                cnt += 1
+                if cnt > 10:
+                    break
         else:
             hash = round(value) % self.size
         return hash # hash [0..self.size - 1]
@@ -22,12 +27,16 @@ class HashTable:
         # находит индекс пустого слота для значения, или None
         idx = self.hash_fun(value)
         idx0 = idx
-        while self.slots[idx] != None:
+        cnt = 0
+        while self.slots[idx] is not None:
             if self.slots[idx] == value:
                 return None
             idx = (idx + self.step) % self.size
+            cnt += 1
             if idx == idx0:
                 return None
+        if cnt > self.stepcnt:
+            self.stepcnt = cnt
         return idx
 
     def put(self, value):
@@ -46,14 +55,17 @@ class HashTable:
         # находит индекс слота со значением, или None
         idx = self.hash_fun(value)
         idx0 = idx
+        cnt = 0
         while self.slots[idx] != value:
+            if cnt > self.stepcnt + 1:
+                return None
             idx = (idx + self.step) % self.size
+            cnt += 1
             if idx == idx0:
                 return None
         return idx
 
 class PowerSet(HashTable):
-
     def __init__(self):
         self.hash = HashTable(20000,101)
         self.len = 0
@@ -82,7 +94,7 @@ class PowerSet(HashTable):
         # иначе False
         #value = str(value)
         idx = self.hash.find(value)
-        if idx != None:
+        if idx is not None:
             self.hash.slots[idx] = None
             self.len -= 1
             return True
@@ -93,10 +105,10 @@ class PowerSet(HashTable):
         if set2 is not None:
             set_inter = PowerSet()
             for item in set2.hash.slots:
-                if item != None:
+                if item is not None:
                     if self.get(item):
                         set_inter.put(item)
-            if set_inter.size() is 0:
+            if set_inter.size() == 0:
                 return None
             return set_inter
         return None
@@ -111,7 +123,7 @@ class PowerSet(HashTable):
             for item in self.hash.slots:
                 if item is not None:
                     set_union.put(item)
-            if set_union.size() is 0:
+            if set_union.size() == 0:
                 return None
             return set_union
         return None
@@ -124,7 +136,7 @@ class PowerSet(HashTable):
             if set_dif is not None:
                 if set_int is not None:
                     for item in set_dif.hash.slots:
-                        if item != None:
+                        if item is not None:
                             if set_int.get(item):
                                 set_dif.remove(item)
                 if set_dif.size() is 0:

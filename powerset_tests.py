@@ -93,9 +93,13 @@ except:
 start_time = time.clock()
 test_set = PowerSet()
 for i in range(20001):
-    test_set.put(str(i))
+    test_set.put(str(i)*10000)
+    #print(test_set.hash.hash_fun(str(i)*10000))
+for i in range(21):
+    test_set.get(str(i)*10000)
 print(test_set.size())
 fin_time = time.clock()
+#printset(test_set)
 print(format(fin_time-start_time))
 """
 h_list = []
