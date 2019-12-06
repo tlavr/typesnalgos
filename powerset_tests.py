@@ -1,4 +1,5 @@
 from powerset import *
+import time
 
 def printset(set):
     print('Items in the set:')
@@ -11,6 +12,7 @@ def printset(set):
 set = PowerSet()
 
 # put tests []
+
 print('Put tests started!')
 print('Set size is: '+str(set.size()))
 try:
@@ -88,10 +90,13 @@ try:
 except:
     print('Subset error!')
 
+start_time = time.clock()
 test_set = PowerSet()
-for i in range(10000):
-    test_set.put(i)
+for i in range(20001):
+    test_set.put(str(i))
 print(test_set.size())
+fin_time = time.clock()
+print(format(fin_time-start_time))
 """
 h_list = []
 col_c = 0

@@ -55,7 +55,7 @@ class HashTable:
 class PowerSet(HashTable):
 
     def __init__(self):
-        self.hash = HashTable(20000,596)
+        self.hash = HashTable(20000,101)
         self.len = 0
         # ваша реализация хранилища
 
