@@ -88,14 +88,27 @@ try:
 except:
     print('Subset error!')
 
-"""h_list = []
+test_set = PowerSet()
+for i in range(10000):
+    test_set.put(i)
+print(test_set.size())
+"""
+h_list = []
 col_c = 0
-for i in range(20000):
+for i in range(10000):
     tmp = set.hash.hash_fun(i)
+    tmp1 = set.hash.hash_fun(str(i))
     if tmp in h_list:
         print('Collision occured!')
         col_c += 1
     else:
         h_list.append(tmp)
+    if tmp1 in h_list:
+        print('Collision occured!')
+        col_c += 1
+    else:
+        h_list.append(tmp1)
     print(tmp)
-print('Number of collisison occured: '+str(col_c))"""
+    print(tmp1)
+print('Number of collisison occured: '+str(col_c))
+"""

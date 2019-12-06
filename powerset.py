@@ -16,7 +16,6 @@ class HashTable:
                 hash = (hash*17 + ord(i)) % self.size
         else:
             hash = round(value) % self.size
-
         return hash # hash [0..self.size - 1]
 
     def seek_slot(self, value):
@@ -24,6 +23,8 @@ class HashTable:
         idx = self.hash_fun(value)
         idx0 = idx
         while self.slots[idx] != None:
+            if self.slots[idx] == value:
+                return None
             idx = (idx + self.step) % self.size
             if idx == idx0:
                 return None
@@ -54,7 +55,7 @@ class HashTable:
 class PowerSet(HashTable):
 
     def __init__(self):
-        self.hash = HashTable(20000,0)
+        self.hash = HashTable(20000,596)
         self.len = 0
         # ваша реализация хранилища
 
