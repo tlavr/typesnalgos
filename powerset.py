@@ -85,7 +85,7 @@ class PowerSet(HashTable):
         # возвращает True если value имеется в множестве,
         # иначе False
         #value = str(value)
-        if self.hash.find(value) != None:
+        if self.hash.find(value) is not None:
             return True
         return False
 
@@ -102,47 +102,47 @@ class PowerSet(HashTable):
 
     def intersection(self, set2):
         # пересечение текущего множества и set2
+        set_inter = PowerSet()
         if set2 is not None:
-            set_inter = PowerSet()
             for item in set2.hash.slots:
                 if item is not None:
                     if self.get(item):
                         set_inter.put(item)
-            if set_inter.size() == 0:
-                return None
-            return set_inter
-        return None
+        #    if set_inter.size() == 0:
+        #        return None
+        return set_inter
+        #return None
 
     def union(self, set2):
         # объединение текущего множества и set2
+        set_union = PowerSet()
         if set2 is not None:
-            set_union = PowerSet()
             for item in set2.hash.slots:
                 if item is not None:
                     set_union.put(item)
             for item in self.hash.slots:
                 if item is not None:
                     set_union.put(item)
-            if set_union.size() == 0:
-                return None
-            return set_union
-        return None
+        #    if set_union.size() == 0:
+        #        return None
+        return set_union
+        #return None
 
     def difference(self, set2):
         # разница текущего множества и set2
         if set2 is not None:
             set_dif = self.union(set2)
             set_int = self.intersection(set2)
-            if set_dif is not None:
-                if set_int is not None:
+            if set_dif.size() != 0:
+                if set_int.size() != 0:
                     for item in set_dif.hash.slots:
                         if item is not None:
                             if set_int.get(item):
                                 set_dif.remove(item)
-                if set_dif.size() is 0:
-                    return None
-            return set_dif
-        return None
+        #        if set_dif.size() is 0:
+        #            return None
+        return set_dif
+        #return None
 
     def issubset(self, set2):
         # возвращает True, если set2 есть

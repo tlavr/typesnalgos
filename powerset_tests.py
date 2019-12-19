@@ -41,6 +41,12 @@ except:
     print('Remove error!')
 
 #intersection tests ['125','126']
+tset1 = PowerSet()
+tset2 = PowerSet()
+for i in range(1,20):
+    tset1.put(str(i))
+for i in range(20,30):
+    tset2.put(str(i))
 print('Intersection tests started!')
 print('Set size is: '+str(set.size()))
 try:
@@ -52,6 +58,7 @@ try:
     set3.put(129)
     printset(set.intersection(set2))
     printset(set.intersection(set3))
+    printset(tset1.intersection(tset2))
 except:
     print('Intersection error!')
 
