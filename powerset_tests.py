@@ -51,7 +51,7 @@ print('Intersection tests started!')
 print('Set size is: '+str(set.size()))
 try:
     set2 = PowerSet()
-    set2.put(126)
+    set2.put('126')
     set2.put('128')
     set3 = PowerSet()
     set3.put(127)

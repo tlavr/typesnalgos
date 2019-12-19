@@ -131,18 +131,17 @@ class PowerSet(HashTable):
     def difference(self, set2):
         # разница текущего множества и set2
         if set2 is not None:
-            set_dif = self.union(set2)
+            set_dif = self.union(PowerSet())
             set_int = self.intersection(set2)
             if set_dif.size() != 0:
                 if set_int.size() != 0:
-                    for item in set_dif.hash.slots:
+                    for item in set_int.hash.slots:
                         if item is not None:
-                            if set_int.get(item):
-                                set_dif.remove(item)
+                            set_dif.remove(item)
         #        if set_dif.size() is 0:
         #            return None
-        return set_dif
-        #return None
+            return set_dif
+        return None
 
     def issubset(self, set2):
         # возвращает True, если set2 есть
