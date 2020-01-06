@@ -77,7 +77,7 @@ class BST:
             else:
                 if FromNode.RightChild is not None:
                     return self.FinMinMax(FromNode.RightChild, FindMax)
-        return FromNode
+        return FromNode.NodeKey
 
     def __isLeaf__(self,node): # 0 -> Leaf, 1 -> has only LeftChild, 2 -> has only RightChild, 3 -> both
         if node.LeftChild is None and node.RightChild is None:
