@@ -45,6 +45,6 @@ printAllNodes(testTree.getAllNodes(),'before delete')
 print('count: '+str(testTree.Count()))
 testTree.DeleteNodeByKey(16) # delete the node with both children
 testTree.DeleteNodeByKey(1) # delete a leaf
-testTree.DeleteNodeByKey(3) # delete the node with one children
+testTree.DeleteNodeByKey(28) # delete the node with one children
 printAllNodes(testTree.getAllNodes(),'after delete')
 print('count: '+str(testTree.Count()))

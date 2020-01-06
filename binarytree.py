@@ -108,32 +108,27 @@ class BST:
             nodeToDel = nodeToDel.Node
             cond = self.__isLeaf__(nodeToDel)
             if cond == 0: # if node is a leaf
-                if self.__isLeftChild__(nodeToDel.Parent, nodeToDel):
-                    nodeToDel.Parent.LeftChild = None
-                else:
-                    nodeToDel.Parent.RightChild = None
+                tmpNode = None
             elif cond == 1: # if node has one left child
-                if self.__isLeftChild__(nodeToDel.Parent, nodeToDel):
-                    nodeToDel.Parent.LeftChild = nodeToDel.LeftChild
-                else:
-                    nodeToDel.Parent.RightChild = nodeToDel.LeftChild
-                nodeToDel.LeftChild.Parent = nodeToDel.Parent
+                tmpNode = nodeToDel.LeftChild
             elif cond == 2: # if node has one right child
-                if self.__isLeftChild__(nodeToDel.Parent, nodeToDel):
-                    nodeToDel.Parent.LeftChild = nodeToDel.RightChild
-                else:
-                    nodeToDel.Parent.RightChild = nodeToDel.RightChild
-                nodeToDel.RightChild.Parent = nodeToDel.Parent
+                tmpNode = nodeToDel.RightChild
             else: # if node has both children
                 minNode = self.FinMinMax(nodeToDel.RightChild,False) # find the most left node on the right side
                 tmpBool = self.DeleteNodeByKey(minNode.NodeKey,False)
-                if self.__isLeftChild__(nodeToDel.Parent, nodeToDel):
-                    nodeToDel.Parent.LeftChild = minNode
-                else:
-                    nodeToDel.Parent.RightChild = minNode
                 minNode.RightChild = nodeToDel.RightChild
                 minNode.LeftChild = nodeToDel.LeftChild
-                minNode.Parent = nodeToDel.Parent
+                tmpNode = minNode
+            if nodeToDel is self.Root:
+                self.Root = tmpNode
+                tmpNode.Parent = None
+            else:
+                if self.__isLeftChild__(nodeToDel.Parent, nodeToDel):
+                    nodeToDel.Parent.LeftChild = tmpNode
+                else:
+                    nodeToDel.Parent.RightChild = tmpNode
+                if tmpNode is not None:
+                    tmpNode.Parent = nodeToDel.Parent
             if out is True:
                 self.__len__ -= 1
             return True
