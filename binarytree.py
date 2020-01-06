@@ -69,7 +69,7 @@ class BST:
 
     def FinMinMax(self, FromNode, FindMax):
         # ищем максимальное/минимальное (узел) в поддереве
-        foundNode = None
+        foundNode = BSTNode(None,None,None)
         if FromNode is not None:
             if FindMax is False:
                 while FromNode.LeftChild is not None:
