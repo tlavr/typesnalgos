@@ -69,16 +69,15 @@ class BST:
 
     def FinMinMax(self, FromNode, FindMax):
         # ищем максимальное/минимальное (узел) в поддереве
-        foundNode = BSTNode(None,None,None)
+        #foundNode = None #BSTNode(None,None,None)
         if FromNode is not None:
             if FindMax is False:
-                while FromNode.LeftChild is not None:
-                    FromNode = FromNode.LeftChild
+                if FromNode.LeftChild is not None:
+                    return self.FinMinMax(FromNode.LeftChild, FindMax)
             else:
-                while FromNode.RightChild is not None:
-                    FromNode = FromNode.RightChild
-            foundNode = FromNode
-        return foundNode
+                if FromNode.RightChild is not None:
+                    return self.FinMinMax(FromNode.RightChild, FindMax)
+        return FromNode
 
     def __isLeaf__(self,node): # 0 -> Leaf, 1 -> has only LeftChild, 2 -> has only RightChild, 3 -> both
         if node.LeftChild is None and node.RightChild is None:
