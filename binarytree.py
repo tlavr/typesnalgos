@@ -121,7 +121,8 @@ class BST:
                 tmpNode = minNode
             if nodeToDel is self.Root:
                 self.Root = tmpNode
-                tmpNode.Parent = None
+                if tmpNode is not None:
+                    self.Root.Parent = None
             else:
                 if self.__isLeftChild__(nodeToDel.Parent, nodeToDel):
                     nodeToDel.Parent.LeftChild = tmpNode
@@ -137,6 +138,8 @@ class BST:
         if fromNode is None or fromNode is self.Root:
             fromNode = self.Root
             self.allNodes = []
+        if fromNode is None:
+            return
         self.allNodes.append(fromNode)
         if fromNode.LeftChild is not None:
             self.__collectAllNodes__(fromNode.LeftChild)

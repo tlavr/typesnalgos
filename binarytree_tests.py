@@ -31,6 +31,9 @@ printAllNodes(testTree.getAllNodes(),'1')
 addVals = [2,1,3,8,6,5,7,16,15,14,10,13,12,11,18,17,19,21,20]
 for val in addVals:
     testTree.AddKeyValue(val,val)
+testTree.AddKeyValue(29,29)
+testTree.AddKeyValue(31,31)
+testTree.AddKeyValue(30,30)
 printAllNodes(testTree.getAllNodes(),'add')
 
 # min max count tests
@@ -48,3 +51,11 @@ testTree.DeleteNodeByKey(1) # delete a leaf
 testTree.DeleteNodeByKey(28) # delete the node with one children
 printAllNodes(testTree.getAllNodes(),'after delete')
 print('count: '+str(testTree.Count()))
+
+testTree2 = BST(None)
+testTree2.AddKeyValue(2,2)
+testTree2.AddKeyValue(1,2)
+#testTree2.AddKeyValue(3,2)
+printAllNodes(testTree2.getAllNodes(),'2')
+testTree2.DeleteNodeByKey(2)
+printAllNodes(testTree2.getAllNodes(),'2')
