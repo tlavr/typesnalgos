@@ -56,11 +56,11 @@ class BST:
         if foundNode.Node is None:
             self.Root = addNode
             self.__len__ += 1
-        elif foundNode.NodeHasKey is True:
+        elif foundNode.NodeHasKey == True:
             return False  # если ключ уже есть
         else:
             addNode.Parent = foundNode.Node
-            if foundNode.ToLeft is True:
+            if foundNode.ToLeft == True:
                 foundNode.Node.LeftChild = addNode
             else:
                 foundNode.Node.RightChild = addNode
@@ -71,15 +71,13 @@ class BST:
         # ищем максимальное/минимальное (узел) в поддереве
         #foundNode = None #BSTNode(None,None,None)
         if FromNode is not None:
-            if FindMax is False:
+            if FindMax == False:
                 if FromNode.LeftChild is not None:
                     return self.FinMinMax(FromNode.LeftChild, FindMax)
             else:
                 if FromNode.RightChild is not None:
                     return self.FinMinMax(FromNode.RightChild, FindMax)
-        if FromNode is not None:
-            return FromNode.NodeKey
-        return None
+        return FromNode
 
     def __isLeaf__(self,node): # 0 -> Leaf, 1 -> has only LeftChild, 2 -> has only RightChild, 3 -> both
         if node.LeftChild is None and node.RightChild is None:
