@@ -33,7 +33,7 @@ class BalancedBST:
         # Recursive add all elements
         self.Root = self.makeTree(None, a, 1)  # parameters for the first adding
 
-    def detTreeLvl(self,node,lvl):
+    def detTreeLvl(self, node, lvl):
         if node.Level > lvl:
             lvl = node.Level
         if node.LeftChild is not None:
@@ -43,8 +43,20 @@ class BalancedBST:
         return lvl
 
     def IsBalanced(self, root_node):
-        if abs(self.detTreeLvl(root_node.LeftChild,root_node.Level)-self.detTreeLvl(root_node.RightChild,root_node.Level)) < 2:
-            return True
+        if root_node is not None:
+            if root_node.LeftChild is not None:
+                if root_node.RightChild is not None:
+                    if abs(self.detTreeLvl(root_node.LeftChild,root_node.Level)-self.detTreeLvl(root_node.RightChild,root_node.Level)) < 2:
+                        return True
+                else:
+                    if abs(self.detTreeLvl(root_node.LeftChild,root_node.Level) - root_node.Level) < 2:
+                        return True
+            else:
+                if root_node.RightChild is not None:
+                    if abs(self.detTreeLvl(root_node.RightChild,root_node.Level) - root_node.Level) < 2:
+                        return True
+                else:
+                    return True
         return False  # сбалансировано ли дерево с корнем root_node
 
     def __collectAllNodes__(self,fromNode = None, mode = 0):
