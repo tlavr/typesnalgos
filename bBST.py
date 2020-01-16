@@ -31,7 +31,7 @@ class BalancedBST:
         # Sort array
         a = sorted(a)
         # Recursive add all elements
-        self.Root = self.makeTree(None, a, 0)  # parameters for the first adding
+        self.Root = self.makeTree(None, a, 1)  # parameters for the first adding
 
     def detTreeLvl(self,node,lvl):
         if node.Level > lvl:
