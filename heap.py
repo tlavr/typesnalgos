@@ -10,11 +10,7 @@ class Heap:
         self.HeapArray = [None]*arSize
         a.sort(reverse=True)
         for key in a:
-            for idx in range(self.HeapArray.__len__()):
-                if self.HeapArray[idx] is None:
-                    self.HeapArray[idx] = key
-                    self.__size__ += 1
-                    break
+            self.Add(key)
 
     def __swap__(self, idx1, idx2):
         idx1 = int(idx1)
