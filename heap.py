@@ -6,9 +6,11 @@ class Heap:
     def MakeHeap(self, a, depth):
         # создаём массив кучи HeapArray из заданного
         # размер массива выбираем на основе глубины depth
+        if a.__len__() == 0:
+            return
         arSize = pow(2,depth+1) - 1
         self.HeapArray = [None]*arSize
-        a.sort(reverse=True)
+        #a.sort(reverse=True)
         for key in a:
             self.Add(key)
 
@@ -21,7 +23,8 @@ class Heap:
 
     def __siftDown__(self, fromIdx):
         # seek for the right place of the element
-        if 2*fromIdx + 2 >= self.HeapArray.__len__() or fromIdx < 0:
+        if 2*fromIdx + 2 >= self.HeapArray.__len__() or fromIdx < 0 or \
+                self.HeapArray[2*fromIdx + 1] is None or self.HeapArray[2*fromIdx + 2] is None:
             return
         if self.HeapArray[fromIdx] < self.HeapArray[2*fromIdx + 1]:
             self.__swap__(fromIdx,2*fromIdx+1)
