@@ -24,16 +24,17 @@ class Heap:
         # seek for the right place of the element
         if 2*fromIdx + 2 >= self.HeapArray.__len__() or fromIdx < 0:
             return
-        if self.HeapArray[2*fromIdx + 1] is not None:
-            if self.HeapArray[fromIdx] < self.HeapArray[2*fromIdx + 1]:
-                self.__swap__(fromIdx,2*fromIdx+1)
-                self.__siftDown__(2*fromIdx+1)
-                self.__siftDown__(fromIdx)
-        if self.HeapArray[2*fromIdx + 2] is not None:
-            if self.HeapArray[fromIdx] < self.HeapArray[2*fromIdx + 2]:
-                self.__swap__(fromIdx,2*fromIdx+2)
-                self.__siftDown__(2*fromIdx+2)
-                self.__siftDown__(fromIdx)
+        if self.HeapArray[fromIdx] is not None:
+            if self.HeapArray[2*fromIdx + 2] is not None:
+                if self.HeapArray[fromIdx] < self.HeapArray[2*fromIdx + 2]:
+                    self.__swap__(fromIdx,2*fromIdx+2)
+                    self.__siftDown__(2*fromIdx+2)
+                    self.__siftDown__(fromIdx)
+            if self.HeapArray[2*fromIdx + 1] is not None:
+                if self.HeapArray[fromIdx] < self.HeapArray[2*fromIdx + 1]:
+                    self.__swap__(fromIdx,2*fromIdx+1)
+                    self.__siftDown__(2*fromIdx+1)
+                    self.__siftDown__(fromIdx)
         return
 
     def GetMax(self):
@@ -41,11 +42,10 @@ class Heap:
         if self.__size__ == 0:
             return -1  # если куча пуста
         ans = self.HeapArray[0] # remember the answer
-        #curIdx = 0 #to find the last meaning value in the array
+        #to find the last meaning value in the array
         for idx in range(self.HeapArray.__len__()-1,0,-1):
             if self.HeapArray[idx] is not None:
                 break
-        #curIdx = idx
         self.HeapArray[0] = self.HeapArray[idx] # put on the top of heap
         self.HeapArray[idx] = None
         self.__size__ -= 1
@@ -66,7 +66,7 @@ class Heap:
                 if (parIdx % round(parIdx+0.1)) == parIdx:
                     parIdx = (idx - 2) / 2
             while parIdx >= 0 and key > self.HeapArray[int(parIdx)]:
-                self.__swap__(int(parIdx), int(idx))
+                self.__swap__(parIdx, idx)
                 idx = parIdx
                 parIdx = (idx - 1) / 2
                 if parIdx > 0:
