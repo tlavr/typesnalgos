@@ -96,6 +96,7 @@ class testHeap(unittest.TestCase):
             a.append(key)
         self.testHeap.MakeHeap(a,d)
         self.assertTrue(self.checkOrder(self.testHeap))
+        self.assertEqual(self.testHeap.HeapArray, [7, 4, 6, 1, 3, 2, 5], 'Full heap test')
         self.assertEqual(self.testHeap.GetMax(),7,'get max test')
         self.assertTrue(self.checkOrder(self.testHeap))
         self.assertEqual(self.testHeap.HeapArray, [6, 4, 5, 1, 3, 2], 'Full heap test')
