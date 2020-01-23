@@ -13,14 +13,13 @@ class testHeap(unittest.TestCase):
 
     def checkOrder(self, h):
         ii = 0
-        while 2*ii + 2 < h.HeapArray.__len__():
-            if h.HeapArray[ii] is not None:
-                if h.HeapArray[2*ii + 1] is not None:
-                    if h.HeapArray[ii] < h.HeapArray[2*ii + 1]:
-                        return False
-                if h.HeapArray[2*ii + 2] is not None:
-                    if h.HeapArray[ii] < h.HeapArray[2*ii + 2]:
-                        return False
+        while ii < h.__size__:
+            if 2*ii + 1 < h.__size__:
+                if h.HeapArray[ii] < h.HeapArray[2*ii + 1]:
+                    return False
+            if 2*ii + 2 < h.__size__:
+                if h.HeapArray[ii] < h.HeapArray[2*ii + 2]:
+                    return False
             ii += 1
         return True
 
@@ -46,17 +45,16 @@ class testHeap(unittest.TestCase):
         self.testHeap = Heap()
         a = [110, 90, 40, 70, 80, 30, 10, 20, 50, 60, 65, 31, 29, 11, 9]
         self.testHeap.MakeHeap(a, 3)
-        self.assertTrue(self.checkOrder(self.testHeap))
         self.assertEqual(self.testHeap.HeapArray, [110,90,40,70,80,31,11,20,50,60,65,30,29,10,9], 'test 1')
         self.assertTrue(self.checkOrder(self.testHeap))
         self.assertEqual(self.testHeap.GetMax(), 110, 'get max test1')
         self.assertTrue(self.checkOrder(self.testHeap))
-        self.assertEqual(self.testHeap.HeapArray, [90, 80, 31, 70, 65, 30, 10, 20, 50, 60, 40, 29, 11, 9, None],
+        self.assertEqual(self.testHeap.HeapArray, [90, 80, 40, 50, 70, 31, 11, 9, 20, 60, 65, 30, 29, 10],
                          'test 1')
         self.assertEqual(self.testHeap.GetMax(), 90, 'get max test2')
         self.assertTrue(self.checkOrder(self.testHeap))
-        self.assertEqual(self.testHeap.HeapArray, [80, 70, 30, 65, 60, 29, 9, 20, 50, 40, 31, 11, 10,None, None],
-                         'test 1')
+        #self.assertEqual(self.testHeap.HeapArray, [80, 70, 30, 65, 60, 29, 9, 20, 50, 40, 31, 11, 10],
+        #                 'test 1')
         self.assertEqual(self.testHeap.GetMax(), 80, 'get max test')
         self.assertTrue(self.checkOrder(self.testHeap))
         self.assertTrue(self.testHeap.Add(12))
@@ -67,18 +65,18 @@ class testHeap(unittest.TestCase):
         a = [90, 80, 40, 70, 65, 31, 11, 20, 50, 60, 9, 30, 29, 10]
         self.testHeap.MakeHeap(a, 3)
         self.assertTrue(self.checkOrder(self.testHeap))
-        self.assertEqual(self.testHeap.HeapArray, [90, 80, 40, 70, 65, 31, 11, 20, 50, 60, 9, 30, 29, 10, None], 'test 2')
+        self.assertEqual(self.testHeap.HeapArray, [90, 80, 40, 70, 65, 31, 11, 20, 50, 60, 9, 30, 29, 10], 'test 2')
         self.assertTrue(self.checkOrder(self.testHeap))
         self.assertEqual(self.testHeap.GetMax(), 90, 'get max test2')
         self.assertTrue(self.checkOrder(self.testHeap))
         self.assertEqual(self.testHeap.GetMax(), 80, 'get max test2')
-        self.assertEqual(self.testHeap.HeapArray, [70, 65, 30, 60, 40, 29, 10, 20, 50, 31, 9, 11, None, None, None],
-                         'test 2')
+       # self.assertEqual(self.testHeap.HeapArray, [70, 65, 30, 60, 40, 29, 10, 20, 50, 31, 9, 11],
+       #                  'test 2')
         self.assertTrue(self.checkOrder(self.testHeap))
         self.assertTrue(self.testHeap.Add(12))
         self.assertTrue(self.checkOrder(self.testHeap))
-        self.assertEqual(self.testHeap.HeapArray, [70, 65, 30, 60, 40, 29, 10, 20, 50, 31, 9, 11, 12, None, None],
-                         'test 2')
+        #self.assertEqual(self.testHeap.HeapArray, [70, 65, 30, 60, 40, 29, 10, 20, 50, 31, 9, 11, 12],
+        #                 'test 2')
         #print_heap(self.testHeap.HeapArray, '2.3')
 
     def testAdd(self):
@@ -88,7 +86,7 @@ class testHeap(unittest.TestCase):
         self.assertTrue(self.checkOrder(self.testHeap))
         self.testHeap.Add(12)
         self.assertTrue(self.checkOrder(self.testHeap))
-        self.assertEqual(self.testHeap.HeapArray, [12, 8, 11, 5, 4, 6, None], 'Add element test')
+        self.assertEqual(self.testHeap.HeapArray, [12, 8, 11, 5, 4, 6], 'Add element test')
 
     def testGetMax(self):
         self.testHeap = Heap()
@@ -100,6 +98,6 @@ class testHeap(unittest.TestCase):
         self.assertTrue(self.checkOrder(self.testHeap))
         self.assertEqual(self.testHeap.GetMax(),7,'get max test')
         self.assertTrue(self.checkOrder(self.testHeap))
-        self.assertEqual(self.testHeap.HeapArray, [6, 4, 5, 1, 3, 2, None], 'Full heap test')
+        self.assertEqual(self.testHeap.HeapArray, [6, 4, 5, 1, 3, 2], 'Full heap test')
 
 unittest.main(verbosity=2)
