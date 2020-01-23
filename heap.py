@@ -41,13 +41,13 @@ class Heap:
         if self.__size__ == 0:
             return -1  # если куча пуста
         ans = self.HeapArray[0] # remember the answer
-        curIdx = 0 #to find the last meaning value in the array
-        for idx in range(self.HeapArray.__len__()-1):
-            if self.HeapArray[idx+1] is None:
+        #curIdx = 0 #to find the last meaning value in the array
+        for idx in range(self.HeapArray.__len__()-1,0,-1):
+            if self.HeapArray[idx] is not None:
                 break
-            curIdx = idx+1
-        self.HeapArray[0] = self.HeapArray[curIdx] # put on the top of heap
-        self.HeapArray[curIdx] = None
+        #curIdx = idx
+        self.HeapArray[0] = self.HeapArray[idx] # put on the top of heap
+        self.HeapArray[idx] = None
         self.__size__ -= 1
         self.__siftDown__(0)
         return ans
