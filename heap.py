@@ -27,16 +27,15 @@ class Heap:
         # seek for the right place of the element
         if fromIdx >= self.__size__ or fromIdx < 0:
             return
-        if 2*fromIdx + 1 < self.__size__:
-            if self.HeapArray[fromIdx] < self.HeapArray[2 * fromIdx + 1]:
-                self.__swap__(fromIdx, 2 * fromIdx + 1)
-                self.__siftDown__(2 * fromIdx + 1)
-                self.__siftDown__(fromIdx)
-
         if 2*fromIdx + 2 < self.__size__:
             if self.HeapArray[fromIdx] < self.HeapArray[2 * fromIdx + 2]:
                 self.__swap__(fromIdx, 2 * fromIdx + 2)
                 self.__siftDown__(2 * fromIdx + 2)
+                self.__siftDown__(fromIdx)
+        if 2*fromIdx + 1 < self.__size__:
+            if self.HeapArray[fromIdx] < self.HeapArray[2 * fromIdx + 1]:
+                self.__swap__(fromIdx, 2 * fromIdx + 1)
+                self.__siftDown__(2 * fromIdx + 1)
                 self.__siftDown__(fromIdx)
         return
 
