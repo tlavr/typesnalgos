@@ -38,6 +38,7 @@ class testHeap(unittest.TestCase):
         self.assertEqual(self.testHeap.GetMax(), 80, 'get max test')
         self.assertTrue(self.testHeap.Add(12))
 
+
     def testAdd(self):
         self.testHeap = Heap()
         a = [11, 8, 6, 5, 4]
