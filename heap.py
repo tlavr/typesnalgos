@@ -27,16 +27,19 @@ class Heap:
         # seek for the right place of the element
         if fromIdx >= self.__size__ or fromIdx < 0:
             return
+        nextIdx = -1
         if 2*fromIdx + 2 < self.__size__:
-            if self.HeapArray[fromIdx] < self.HeapArray[2 * fromIdx + 2]:
-                self.__swap__(fromIdx, 2 * fromIdx + 2)
-                self.__siftDown__(2 * fromIdx + 2)
-                self.__siftDown__(fromIdx)
-        if 2*fromIdx + 1 < self.__size__:
-            if self.HeapArray[fromIdx] < self.HeapArray[2 * fromIdx + 1]:
-                self.__swap__(fromIdx, 2 * fromIdx + 1)
-                self.__siftDown__(2 * fromIdx + 1)
-                self.__siftDown__(fromIdx)
+            if self.HeapArray[2*fromIdx+2] > self.HeapArray[2*fromIdx + 1]:
+                nextIdx = 2*fromIdx + 2
+            else:
+                nextIdx = 2*fromIdx + 1
+        elif 2*fromIdx + 1 < self.__size__:
+            nextIdx = 2*fromIdx + 1
+
+        if nextIdx > 0:
+            if self.HeapArray[fromIdx] < self.HeapArray[nextIdx]:
+                self.__swap__(fromIdx, nextIdx)
+                self.__siftDown__(nextIdx)
         return
 
     def GetMax(self):
