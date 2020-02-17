@@ -51,7 +51,7 @@ class SimpleGraph:
     def __getListFromWayStack__(self):
         ansList = []
         while self.way.size() != 0:
-            ansList.append(self.way.pop())
+            ansList.append(self.vertex[self.way.pop()])
         ansList.reverse()
         return ansList
 

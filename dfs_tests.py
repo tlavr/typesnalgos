@@ -24,12 +24,16 @@ class testGraph(unittest.TestCase):
         self.assertEqual(self.testGraph.vertex[0].Value, 1, 'test root')
         self.assertEqual(self.testGraph.m_adjacency[0], [0,1,0,0,0,0,0,0,0,1,0,0,0,0,0], 'test adj')
         self.assertEqual(self.testGraph.vertex[6].Value, 7, 'test vertex')
-        self.assertEqual(self.testGraph.DepthFirstSearch(2,6),[2,1,0,9,8,7,6],'test DFS')
+        self.assertEqual(self.testGraph.DepthFirstSearch(2,6),[self.testGraph.vertex[2],self.testGraph.vertex[1],self.testGraph.vertex[0],
+                                                               self.testGraph.vertex[9],self.testGraph.vertex[8],self.testGraph.vertex[7],self.testGraph.vertex[6]],'test DFS')
         self.testGraph.AddEdge(9, 7)
         self.testGraph.AddEdge(1, 9)
         self.testGraph.AddEdge(3, 1)
         self.testGraph.AddEdge(5, 3)
         self.testGraph.AddEdge(5, 7)
-        self.assertEqual(self.testGraph.DepthFirstSearch(2, 6), [2, 1,0, 9, 7, 6], 'test DFS')
+        self.assertEqual(self.testGraph.DepthFirstSearch(2, 6),
+                         [self.testGraph.vertex[2], self.testGraph.vertex[1], self.testGraph.vertex[0],
+                          self.testGraph.vertex[9], self.testGraph.vertex[7],
+                          self.testGraph.vertex[6]], 'test DFS')
 
 unittest.main(verbosity=2)
