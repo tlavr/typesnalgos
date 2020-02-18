@@ -34,7 +34,14 @@ class testGraph(unittest.TestCase):
         self.assertEqual(self.testGraph.DepthFirstSearch(2, 6),
                          [self.testGraph.vertex[2], self.testGraph.vertex[1], self.testGraph.vertex[0],
                           self.testGraph.vertex[9], self.testGraph.vertex[7],
-                          self.testGraph.vertex[6]], 'test DFS')
+                          self.testGraph.vertex[6]], 'test DFS2')
+        self.assertEqual(self.testGraph.DepthFirstSearch(0, 5),
+                         [self.testGraph.vertex[0], self.testGraph.vertex[1], self.testGraph.vertex[2],
+                          self.testGraph.vertex[3], self.testGraph.vertex[5]], 'test DFS3')
+        self.assertEqual(self.testGraph.DepthFirstSearch(9, 5),
+                         [self.testGraph.vertex[9], self.testGraph.vertex[0], self.testGraph.vertex[1],
+                          self.testGraph.vertex[2], self.testGraph.vertex[3], self.testGraph.vertex[5]], 'test DFS4')
+
     def testBFS(self):
         size = 15
         self.testGraph = SimpleGraph(size)
@@ -55,5 +62,15 @@ class testGraph(unittest.TestCase):
         self.testGraph.AddEdge(5, 7)
         self.assertEqual(self.testGraph.BreadthFirstSearch(2, 6),
                          [self.testGraph.vertex[2], self.testGraph.vertex[3], self.testGraph.vertex[5], self.testGraph.vertex[6]], 'test BFS2')
+        self.assertEqual(self.testGraph.BreadthFirstSearch(3, 9),
+                         [self.testGraph.vertex[3], self.testGraph.vertex[1],
+                          self.testGraph.vertex[9]], 'test BFS3')
+        self.assertEqual(self.testGraph.BreadthFirstSearch(0, 5),
+                         [self.testGraph.vertex[0], self.testGraph.vertex[1], self.testGraph.vertex[3],
+                          self.testGraph.vertex[5]], 'test BFS4')
+        self.assertEqual(self.testGraph.BreadthFirstSearch(9, 5),
+                         [self.testGraph.vertex[9], self.testGraph.vertex[7],
+                          self.testGraph.vertex[5]], 'test BFS5')
+
 
 unittest.main(verbosity=2)
