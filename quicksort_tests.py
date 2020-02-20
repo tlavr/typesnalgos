@@ -9,6 +9,9 @@ class testSort(unittest.TestCase):
         self.b = [7,6,4,5,2,3,1]
         self.assertEqual(ArrayChunk(self.b), 1, 'ChunkIdx2')
         self.assertEqual(self.b, [1, 2, 4, 3, 5, 6, 7], 'Arr2')
+        self.c = [5, 2]
+        self.assertEqual(ArrayChunk(self.c), 1)
+        self.assertEqual(self.c, [2,5], 'Arr3')
 
 
 unittest.main(verbosity=2)
