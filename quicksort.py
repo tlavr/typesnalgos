@@ -9,14 +9,15 @@ def ArrayChunk(arr):
     el = arr[n]
     idx1 = 0
     idx2 = arr.__len__() - 1
-    while 1:
-        if arr[idx1] < el:
+    while True:
+        while arr[idx1] < el:
             idx1 += 1
-        if arr[idx2] > el:
+        while arr[idx2] > el:
             idx2 -= 1
         if idx1 == idx2 - 1:
             if arr[idx1] > arr[idx2]:
                 swap(arr, idx1, idx2)
+                n = arr.__len__() // 2
                 el = arr[n]
                 idx1 = 0
                 idx2 = arr.__len__() - 1
@@ -27,6 +28,5 @@ def ArrayChunk(arr):
         swap(arr, idx1, idx2)
         if idx1 == n:
             n = idx2
-        else:
-            if idx2 == n:
-                n = idx1
+        elif idx2 == n:
+            n = idx1
