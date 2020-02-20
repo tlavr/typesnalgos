@@ -49,7 +49,7 @@ def InsertionSort(arr):
 def KnuthSequence(arrsize):
     el = 1
     ansList = []
-    while el <= arrsize:
+    while el-1 <= arrsize:
         ansList.append(el)
         el = 3 * el + 1
     ansList.reverse()

@@ -31,10 +31,10 @@ class testSort(unittest.TestCase):
         self.assertEqual(InsertionSort(self.a), self.c.sort(), 'Insert1')
 
     def testKnuth(self):
-        self.assertEqual(KnuthSequence(15),[13,4,1],'Knuth1')
+        self.assertEqual(KnuthSequence(15), [13, 4, 1], 'Knuth1')
         self.assertEqual(KnuthSequence(14), [13, 4, 1], 'Knuth2')
         self.assertEqual(KnuthSequence(13), [13, 4, 1], 'Knuth3')
-        self.assertEqual(KnuthSequence(0), [], 'Knuth4')
+        self.assertEqual(KnuthSequence(0), [1], 'Knuth4')
         self.assertEqual(KnuthSequence(1), [1], 'Knuth5')
         self.assertEqual(KnuthSequence(40), [40, 13, 4, 1], 'Knuth1')
 
