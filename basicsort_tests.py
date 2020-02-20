@@ -11,5 +11,12 @@ class testSort(unittest.TestCase):
         self.a = [1, 4, 2, 3, 5, 6]
         self.assertFalse(BubbleSortStep(self.a))
 
+    def testInsertion(self):
+        self.a = [1,6,5,4,3,2,7]
+        InsertionSortStep(self.a, 3, 1)
+        self.assertEqual(self.a,[1,3,5,4,6,2,7],'instest1')
+        InsertionSortStep(self.a, 1, 2)
+        self.assertEqual(self.a, [1, 3, 4, 5, 2, 6, 7], 'instest2')
+
 print('5')
 unittest.main(verbosity=2)
