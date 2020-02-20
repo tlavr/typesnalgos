@@ -21,8 +21,15 @@ def BubbleSortStep(arr):
         return True
     return False
 
-def InsertionSortStep(arr, step, idx):
-    while idx + step < arr.__len__():
-        if arr[idx] > arr[idx+step]:
-            swap(arr,idx,idx+step)
-        idx = idx + step
+def InsertionSortStep(arr, step, bidx):
+    isOk = False
+    while not isOk:
+        idx = bidx
+        isSwap = False
+        while idx + step < arr.__len__():
+            if arr[idx] > arr[idx+step]:
+                swap(arr,idx,idx+step)
+                isSwap = True
+            idx = idx + step
+        if not isSwap:
+            isOk = True
