@@ -12,6 +12,9 @@ class testSort(unittest.TestCase):
         self.c = [5, 2]
         self.assertEqual(ArrayChunk(self.c), 1)
         self.assertEqual(self.c, [2,5], 'Arr3')
+        self.d = [7,6,5,4,3,2,1]
+        self.e = [5,4,7,6,3,2,1]
+        self.assertEqual(QuickSort(self.d), self.e.sort(), 'Quick1')
 
 
 unittest.main(verbosity=2)
