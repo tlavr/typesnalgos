@@ -16,5 +16,12 @@ class testSort(unittest.TestCase):
         self.e = [5,4,7,6,3,2,1]
         self.assertEqual(QuickSort(self.d), self.e.sort(), 'Quick1')
 
+    def testTailOpt(self):
+        self.d = [7,6,5,4,3,2,1]
+        self.e = [5,4,7,6,3,2,1]
+        self.assertEqual(QuickSortTailOptimization(self.d), self.e.sort(), 'QuickOpt1')
+        self.f = [1, 6, 2, 4, 7, 8, 3, 5, 9, 0]
+        self.g = [1, 6, 2, 4, 7, 8, 3, 5, 9, 0]
+        self.assertEqual(QuickSortTailOptimization(self.f),self.g.sort(), 'QuickOpt2')
 
 unittest.main(verbosity=2)
