@@ -26,7 +26,7 @@ def KthOrderStatisticsStep(arr, L = 0, R = None, k = 0):
                 idx1 = L
                 idx2 = R
                 continue
-        elif idx1 == idx2 or (idx1 == (idx2 - 1) and arr[idx1] <= arr[idx2]):
+        if idx1 == idx2 or (idx1 == (idx2 - 1) and arr[idx1] <= arr[idx2]):
             if n == k:
                 return [n, n]
             elif n < k:
@@ -39,6 +39,12 @@ def KthOrderStatisticsStep(arr, L = 0, R = None, k = 0):
                 n = idx2
             elif idx2 == n:
                 n = idx1
+            if idx1 < n:
+                idx1 += 1
+            if idx2 > n:
+                idx2 -= 1
+
+
 
 
 def kthOrderStatistics(arr, k):
