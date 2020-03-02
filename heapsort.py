@@ -90,6 +90,9 @@ class HeapSort:
         self.ansList = []
 
     def GetNextMax(self):
+        return self.HeapObject.GetMax()
+
+    def sort(self):
         self.ansList = []
         el = self.HeapObject.GetMax()
         while el != -1:
