@@ -3,10 +3,16 @@ class BinarySearch:
         self.array = arr
         self.Left = 0
         self.Right = arr.__len__() - 1
+        if self.Right < 0:
+            self.Right = 0
         self.isFound = False
         self.isEnd = False
 
     def Step(self, n):
+        if self.array.__len__() == 0:
+            self.isEnd = True
+        if self.isEnd:
+            return
         if self.isFound:
             self.isEnd = True
             return
