@@ -32,6 +32,9 @@ class testBinSearch(unittest.TestCase):
         # test for 1..99 array, search for 49 (48 idx)
         self.a = [ii for ii in range(1, 100)]
         self.bs = BinarySearch(self.a)
+        self.assertEqual(self.bs.GetResult(), 0, 'test9')
+        self.assertEqual(self.bs.Left, 0, 'test9')
+        self.assertEqual(self.bs.Right, 98, 'test9')
         self.bs.Step(49)
         self.assertEqual(self.bs.GetResult(), 0, 'test9')
         self.assertEqual(self.bs.Left, 0, 'test9')
