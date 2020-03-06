@@ -14,5 +14,10 @@ class testBinSearch(unittest.TestCase):
         while self.bs.GetResult() == 0:
             self.bs.Step(31)
         self.assertEqual(self.bs.GetResult(), -1, 'test3')
+        self.bs = BinarySearch(self.a)
+        while self.bs.GetResult() != 1:
+            self.assertEqual(self.bs.GetResult(), 0, 'test4')
+            self.bs.Step(2)
+        self.assertEqual(self.bs.GetResult(), 1, 'test5')
 
 unittest.main(verbosity=2)

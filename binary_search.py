@@ -27,9 +27,8 @@ class BinarySearch:
             self.Left = cidx + 1
 
     def GetResult(self):
+        if self.isFound:
+            return 1
         if self.isEnd:
-            if self.isFound:
-                return 1
-            else:
-                return -1
+            return -1
         return 0
