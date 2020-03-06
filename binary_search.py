@@ -28,9 +28,13 @@ class BinarySearch:
             return
         elif n < self.array[cidx]:
             self.Right = cidx - 1
-            return
         else:
             self.Left = cidx + 1
+        if self.Left == self.Right:
+            if self.array[self.Left] == n:
+                self.isFound = True
+            self.isEnd = True
+            return
 
     def GetResult(self):
         if self.isFound:

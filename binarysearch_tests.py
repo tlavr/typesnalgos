@@ -28,7 +28,6 @@ class testBinSearch(unittest.TestCase):
         self.bs = BinarySearch([])
         self.bs.Step(1)
         self.assertEqual(self.bs.GetResult(), -1, 'test8')
-
         # test for 1..99 array, search for 49 (48 idx)
         self.a = [ii for ii in range(1, 100)]
         self.bs = BinarySearch(self.a)
@@ -54,10 +53,6 @@ class testBinSearch(unittest.TestCase):
         self.bs.Step(49)
         self.assertEqual(self.bs.GetResult(), 0, 'test9')
         self.assertEqual(self.bs.Left, 46, 'test9')
-        self.assertEqual(self.bs.Right, 48, 'test9')
-        self.bs.Step(49)
-        self.assertEqual(self.bs.GetResult(), 0, 'test9')
-        self.assertEqual(self.bs.Left, 48, 'test9')
         self.assertEqual(self.bs.Right, 48, 'test9')
         self.bs.Step(49)
         self.assertEqual(self.bs.GetResult(), 1, 'test9')
