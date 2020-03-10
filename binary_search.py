@@ -13,22 +13,19 @@ class BinarySearch:
             self.isEnd = True
         if self.isEnd:
             return
-        if self.isFound:
-            self.isEnd = True
-            return
-        if self.Left == self.Right:
-            if self.array[self.Left] == n:
-                self.isFound = True
-            self.isEnd = True
-            return
+        #if self.Left == self.Right:
+        #    if self.array[self.Left] == n:
+        #        self.isFound = True
+        #    self.isEnd = True
+        #    return
         cidx = (self.Left + self.Right) // 2
         if self.array[cidx] == n:
             self.isFound = True
             self.isEnd = True
             return
-        elif n < self.array[cidx]:
+        elif n < self.array[cidx] and self.Right > 0:
             self.Right = cidx - 1
-        else:
+        elif n > self.array[cidx] and self.Left < (self.array.__len__()-1):
             self.Left = cidx + 1
         if self.Left == self.Right:
             if self.array[self.Left] == n:

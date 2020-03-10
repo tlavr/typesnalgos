@@ -54,8 +54,8 @@ class testBinSearch(unittest.TestCase):
         self.assertEqual(self.bs.GetResult(), 0, 'test9')
         self.assertEqual(self.bs.Left, 46, 'test9')
         self.assertEqual(self.bs.Right, 48, 'test9')
-        self.bs.Step(49)
-        self.assertEqual(self.bs.GetResult(), 1, 'test9')
+        self.bs.Step(100)
+        self.assertEqual(self.bs.GetResult(), -1, 'test9')
         self.assertEqual(self.bs.Left, 48, 'test9')
         self.assertEqual(self.bs.Right, 48, 'test9')
 
