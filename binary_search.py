@@ -26,7 +26,7 @@ class BinarySearch:
             self.Left = cidx + 1
             isChanged = True
         if self.Left == self.Right - 1:
-            if n < self.array[self.Right] and n > self.array[self.Left]:
+            if (n < self.array[self.Right] and n > self.array[self.Left]) or n > self.array[self.Right] or n < self.array[self.Left]:
                 self.isEnd = True
                 return
         if self.Left == self.Right:
