@@ -13,12 +13,7 @@ class BinarySearch:
             self.isEnd = True
         if self.isEnd:
             return
-        #if self.Left == self.Right:
-        #    if self.array[self.Left] == n:
-        #        self.isFound = True
-        #    self.isEnd = True
-        #    return
-        isChanged = False
+        isChanged = True #False
         cidx = (self.Left + self.Right) // 2
         if self.array[cidx] == n:
             self.isFound = True
@@ -30,6 +25,10 @@ class BinarySearch:
         elif n > self.array[cidx] and self.Left < (self.array.__len__()-1):
             self.Left = cidx + 1
             isChanged = True
+        if self.Left == self.Right - 1:
+            if n < self.array[self.Right] and n > self.array[self.Left]:
+                self.isEnd = True
+                return
         if self.Left == self.Right:
             if self.array[self.Left] == n:
                 self.isFound = True

@@ -58,6 +58,10 @@ class testBinSearch(unittest.TestCase):
         self.assertEqual(self.bs.GetResult(), -1, 'test9')
         self.assertEqual(self.bs.Left, 48, 'test9')
         self.assertEqual(self.bs.Right, 48, 'test9')
+        self.a = [1, 3, 4]
+        self.bs = BinarySearch(self.a)
+        self.bs.Step(2)
+        self.assertEqual(self.bs.GetResult(), -1, 'test10')
 
 
 unittest.main(verbosity=2)
